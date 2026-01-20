@@ -1,0 +1,74 @@
+:root {
+    --gold: linear-gradient(135deg, #ffcf67 0%, #d3a131 100%);
+    --silver: linear-gradient(135deg, #e0e0e0 0%, #909090 100%);
+    --bronze: linear-gradient(135deg, #cd7f32 0%, #8b4513 100%);
+    --dark-bg: #0a0a0c;
+}
+
+.descricao {
+    color: #a1a1aa;
+    font-size: 0.95rem;
+    margin-bottom: 25px;
+}
+
+/* Benefícios */
+.secao-beneficios h3 {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #71717a;
+    margin-bottom: 15px;
+}
+
+.secao-beneficios ul {
+    list-style: none;
+}
+
+.secao-beneficios li {
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.secao-beneficios li::before {
+    content: "✓";
+    color: #22c55e;
+    font-weight: bold;
+}
+
+/* Selos */
+.secao-selos {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.selo-linha {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.8rem;
+    color: #a1a1aa;
+    margin-bottom: 6px;
+}
+
+.selo-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.verde {
+    background: #22c55e;
+    box-shadow: 0 0 10px #22c55e;
+}
+
+.amarelo {
+    background: #eab308;
+    box-shadow: 0 0 10px #eab308;
+}
+
+.vermelho {
+    background: #ef4444;
+}

@@ -1,0 +1,30 @@
+:root {
+    --gold: linear-gradient(135deg, #ffcf67 0%, #d3a131 100%);
+    --silver: linear-gradient(135deg, #e0e0e0 0%, #909090 100%);
+    --bronze: linear-gradient(135deg, #cd7f32 0%, #8b4513 100%);
+    --dark-bg: #0a0a0c;
+}
+
+.btn-assinar {
+    width: 100%;
+    padding: 16px;
+    border-radius: 12px;
+    border: none;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: auto;
+    transition: 0.3s;
+    background: #fff;
+    color: #000;
+}
+
+.card-dourado .btn-assinar {
+    background: var(--gold);
+    color: #000;
+}
+
+.btn-assinar:hover {
+    filter: brightness(1.1);
+    transform: scale(1.02);
+}

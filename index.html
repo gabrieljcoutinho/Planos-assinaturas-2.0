@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Planos Premium</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/container.css">
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/gridCards.css">
+  <link rel="stylesheet" href="css/card.css">
+  <link rel="stylesheet" href="css/cardHeader.css">
+  <link rel="stylesheet" href="css/cardBody.css">
+  <link rel="stylesheet" href="css/buttons.css">
+  <link rel="stylesheet" href="css/badgGarantia.css">
+  <link rel="stylesheet" href="css/animacaoAssinado.css">
+  <link rel="stylesheet" href="css/responsividade.css">
+  <link rel="stylesheet" href="css/medalhas.css">
+  <link rel="stylesheet" href="css/precoBronze.css">
+  <link rel="stylesheet" href="css/precoPrata.css">
+    <link rel="stylesheet" href="css/imgs.css">
+</head>
+
+<body>
+
+<div class="premium-container">
+
+  <!-- HEADER -->
+  <div class="premium-header">
+    <h1>Escolha seu Plano</h1>
+    <p>Destaque-se e conquiste mais oportunidades</p>
+  </div>
+
+  <!-- CARDS -->
+  <div class="cards-grid" id="cardsGrid"></div>
+
+  <!-- GARANTIA -->
+  <div class="garantia">
+    <span class="garantia-icone">🔒</span>
+    <span>Cancele quando quiser • Sem fidelidade</span>
+  </div>
+</div>
+
+<script>
+/* ===== DADOS DOS PLANOS ===== */
+const planos = [
+  {
+    id: "bronze",
+    titulo: "Plano Bronze 🥉",
+    subtitulo: "Visibilidade Básica",
+    preco: "R$ 12,00",
+    periodo: "/mês",
+    img: "./imgs/medalhaBronze.png",
+    descricao: "Para quem está começando ou contrata poucos serviços",
+    beneficios: [
+      "10 Mensagens/dia",
+      "Prioridade nas buscas",
+      "Perfil simples",
+      "Pode fechar 3 trabalhos por mês",
+      "Medalha de Bronze no perfil"
+    ],
+    selos: {
+      verde: ["Serviço recorrente"],
+      amarelo: ["Cliente confiável"],
+      vermelho: ["Trabalho pausado"]
+    }
+  },
+  {
+    id: "prata",
+    titulo: "Plano Prata 🥈",
+    subtitulo: "Profissional ⭐",
+    destaque: true,
+    preco: "R$ 20,00",
+    periodo: "/mês",
+    img: "./imgs/medalhaPrata.png",
+    descricao: "Para quem quer ser contratada com frequência",
+    beneficios: [
+      "20 Mensagens/dia",
+      "Todos os planos de fundo desbloqueados",
+      "Pode fechar 5 trabalhos por mês",
+      "Medalha de Prata no perfil"
+    ],
+    selos: {
+      verde: ["Poucas vagas", "Horário flexível"],
+      amarelo: ["Contratada com frequência"],
+      vermelho: ["Trabalho pausado"]
+    }
+  },
+  {
+    id: "dourado",
+    titulo: "Plano Dourado 🥇",
+    subtitulo: "Top Profissional 🚀",
+    preco: "R$ 50,00",
+    periodo: "/mês",
+    img: "./imgs/medalhaOuro.png",
+    descricao: "Para quem quer lotar a agenda",
+    beneficios: [
+      "Mensagens ilimitadas",
+      "Recomendados",
+      "Pode fechar trabalhos ilimitados por mês",
+      "Medalha de Ouro no perfil"
+    ],
+    selos: {
+      verde: ["Disponível amanhã"],
+      amarelo: ["Atendimento excelente"],
+      vermelho: ["Agenda cheia"]
+    }
+  }
+];
+
+let planoAssinado = null;
+
+/* ===== RENDERIZAÇÃO ===== */
+function renderCards() {
+  const grid = document.getElementById("cardsGrid");
+  grid.innerHTML = "";
+
+  planos.forEach(plano => {
+    const isAssinado = planoAssinado === plano.id;
+
+    const card = document.createElement("div");
+    card.className = `card-wrapper ${plano.destaque ? "destaque" : ""}`;
+
+    card.innerHTML = `
+      ${plano.destaque ? `<div class="badge-popular">Mais Vendido</div>` : ""}
+
+      ${isAssinado ? `
+        <div class="medalha-container-fixo">
+          <img src="${plano.img}" class="medalha-img-animada">
+        </div>` : ""}
+
+      <div class="card card-${plano.id} ${isAssinado ? "card-ativo-flash" : ""}">
+        <div class="card-header">
+          <h2>${plano.titulo}</h2>
+          <small class="sub-plano">${plano.subtitulo}</small>
+
+          <div class="preco-container">
+            <span class="preco ${plano.id === "bronze" ? "preco-bronze" : plano.id === "prata" ? "preco-prata" : ""}">
+              ${plano.preco}
+            </span>
+            <span class="periodo">${plano.periodo}</span>
+          </div>
+        </div>
+
+        <div class="card-body">
+          <p class="descricao">${plano.descricao}</p>
+
+          <div class="secao-beneficios">
+            <h3>✓ Benefícios</h3>
+            <ul>
+              ${plano.beneficios.map(b => `<li>${b}</li>`).join("")}
+            </ul>
+          </div>
+
+          <div class="secao-selos">
+            <h3>Selos Disponíveis</h3>
+            ${Object.entries(plano.selos).map(([cor, lista]) =>
+              lista.length ? `
+                <div class="selo-linha">
+                  <span class="selo-dot ${cor}"></span>
+                  <span>${lista.join(", ")}</span>
+                </div>` : ""
+            ).join("")}
+          </div>
+        </div>
+
+        <div class="card-footer">
+          <button class="btn-assinar ${isAssinado ? "btn-sucesso" : ""}"
+            ${isAssinado ? "disabled" : ""}
+            onclick="assinarPlano('${plano.id}')">
+            ${isAssinado ? "✓ ASSINADO" : "Assinar Agora"}
+          </button>
+        </div>
+      </div>
+    `;
+
+    grid.appendChild(card);
+  });
+}
+
+function assinarPlano(id) {
+  planoAssinado = id;
+  renderCards();
+}
+
+renderCards();
+</script>
+
+</body>
+</html>

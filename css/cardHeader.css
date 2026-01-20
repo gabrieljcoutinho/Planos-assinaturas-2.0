@@ -1,0 +1,28 @@
+:root {
+    --gold: linear-gradient(135deg, #ffcf67 0%, #d3a131 100%);
+    --silver: linear-gradient(135deg, #e0e0e0 0%, #909090 100%);
+    --bronze: linear-gradient(135deg, #cd7f32 0%, #8b4513 100%);
+    --dark-bg: #0a0a0c;
+}
+
+.card-header h2 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.preco-container {
+    margin-bottom: 10px;
+}
+
+.preco {
+    font-size: 2.5rem;
+    font-weight: 800;
+}
+
+.card-dourado .preco {
+    color: #ffcf67;
+}
+
+.card-prata .preco {
+    color: #e0e0e0;
+}

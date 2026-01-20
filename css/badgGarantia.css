@@ -1,0 +1,29 @@
+:root {
+    --gold: linear-gradient(135deg, #ffcf67 0%, #d3a131 100%);
+    --silver: linear-gradient(135deg, #e0e0e0 0%, #909090 100%);
+    --bronze: linear-gradient(135deg, #cd7f32 0%, #8b4513 100%);
+    --dark-bg: #0a0a0c;
+}
+
+.badge-popular {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #fff;
+    color: #000;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    z-index: 10;
+}
+
+.garantia {
+    margin-top: 40px;
+    color: #71717a;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}

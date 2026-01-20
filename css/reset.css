@@ -1,0 +1,13 @@
+:root {
+    --gold: linear-gradient(135deg, #ffcf67 0%, #d3a131 100%);
+    --silver: linear-gradient(135deg, #e0e0e0 0%, #909090 100%);
+    --bronze: linear-gradient(135deg, #cd7f32 0%, #8b4513 100%);
+    --dark-bg: #0a0a0c;
+}
+
+body,
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}

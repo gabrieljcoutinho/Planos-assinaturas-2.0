@@ -1,0 +1,43 @@
+/* --- CONFIGURAÇÃO PADRÃO (DESKTOP) --- */
+.medalha-container-fixo {
+    position: absolute;
+    top: -35px;
+    /* Altura original para PC */
+    right: -15px;
+    z-index: 100;
+    pointer-events: none;
+}
+
+/* --- AJUSTE PARA CELULAR (MOBILE) --- */
+@media (max-width: 768px) {
+    .medalha-container-fixo {
+        /* Desce a medalha um pouco para não cortar ou encavalar */
+        top: -10px;
+        right: 5px;
+        /* Traz um pouco mais para dentro para não vazar da tela */
+    }
+
+    .medalha-img-animada {
+        width: 65px;
+        /* Reduzi um pouco o tamanho para telas menores */
+    }
+}
+
+/* Mantendo sua animação */
+.medalha-img-animada {
+    height: auto;
+    filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.4));
+    animation: popMedalha 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes popMedalha {
+    0% {
+        transform: scale(0) rotate(-20deg);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+    }
+}

@@ -1,0 +1,45 @@
+:root {
+    --gold: linear-gradient(135deg, #ffcf67 0%, #d3a131 100%);
+    --silver: linear-gradient(135deg, #e0e0e0 0%, #909090 100%);
+    --bronze: linear-gradient(135deg, #cd7f32 0%, #8b4513 100%);
+    --dark-bg: #0a0a0c;
+}
+
+.card-wrapper {
+    position: relative;
+    border-radius: 24px;
+    padding: 2px;
+    transition: 0.3s;
+}
+
+.card-wrapper:hover {
+    transform: translateY(-10px);
+}
+
+.card {
+    background: #121214;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 22px;
+    padding: 40px 30px;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    backdrop-filter: blur(10px);
+}
+
+.card-dourado {
+    border: 3px solid transparent;
+    background-clip: padding-box;
+}
+
+.card-wrapper:has(.card-dourado) {
+    background: linear-gradient(90deg, #d3a131, #ffcf67, #d3a131);
+    background-size: 200% auto;
+    animation: borderGlow 3s linear infinite;
+}
+
+@keyframes borderGlow {
+    to {
+        background-position: 200% center;
+    }
+}

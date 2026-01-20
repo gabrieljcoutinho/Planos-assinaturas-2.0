@@ -1,0 +1,37 @@
+:root {
+    --gold: linear-gradient(135deg, #ffcf67 0%, #d3a131 100%);
+    --silver: linear-gradient(135deg, #e0e0e0 0%, #909090 100%);
+    --bronze: linear-gradient(135deg, #cd7f32 0%, #8b4513 100%);
+    --dark-bg: #0a0a0c;
+}
+
+@media (max-width: 768px) {
+    .premium-header h1 {
+        font-size: 2rem;
+    }
+
+    .cards-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .card {
+        padding: 30px 20px;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .premium-container {
+        overflow-y: auto;
+        max-height: 100vh;
+        /* evita corte */
+        padding-bottom: 20px;
+        /* espaço para footer */
+    }
+
+    .cards-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
